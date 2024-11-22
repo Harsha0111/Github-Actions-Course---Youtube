@@ -1,0 +1,36 @@
+name: 02.deploy react to netlify
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+
+            - name: Set up nodejs
+              uses: actions/setup-node@v3
+              with:
+                node-version: 18.x
+
+            - name: Install Dependencies
+              run: npm install
+              working-directory: modules/02.React_Pipeline
+              continue-on-error: false
+
+            - name: Run React tests
+              run: npm test -- --watchAll=false
+              working-directory: modules/02.React_Pipeline
+              continue-on-error: false
+
+            - name: Build the React App
+              run: npm run build
+              working-directory: modules/02.React_Pipeline
+              continue-on-error: false
+
+          
