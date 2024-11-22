@@ -31,4 +31,11 @@ jobs:
               continue-on-error: false
               working-directory: modules/03.Python_Flask_Pipeline
 
+            - name: Py test
+              run: pytest test_app.py
+              continue-on-error: false
+              working-directory: modules/03.Python_Flask_Pipeline
+
+              
+
            
