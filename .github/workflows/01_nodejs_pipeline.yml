@@ -1,0 +1,41 @@
+name: 01.nodejs pipeline
+
+on:
+    push:
+        branches:
+            - dev
+
+
+jobs:
+    buid:
+        runs-on: ubuntu-latest
+
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3 
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
+              with:
+                node-version: 18.x
+
+            - name: Install dependencies with npm
+              run: npm install
+              working-directory: modules/01.Nodejs_Pipeline
+              continue-on-error: false
+
+
+
+
+            
+
+           
+              
+              
+
+         
+
+
+            
+              
