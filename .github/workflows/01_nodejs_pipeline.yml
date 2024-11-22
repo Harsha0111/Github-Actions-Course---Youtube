@@ -62,7 +62,6 @@ jobs:
                     echo "❌ Failed to install dependencies!"
                     exit 1
                 fi
-
                 
                 if [ ${{ steps.run-eslint.outcome}} == 'success' ]; then
                     echo "✅ Dependencies installed successfully!"
@@ -70,7 +69,6 @@ jobs:
                     echo "❌ Failed to install dependencies!"
                     exit 1
                 fi
-
                 
                 if [ ${{ steps.run-tests.outcome}} == 'success' ]; then
                     echo "✅ Dependencies installed successfully!"
