@@ -24,6 +24,54 @@ jobs:
               run: npm install
               working-directory: modules/01.Nodejs_Pipeline
               continue-on-error: false
+              id: install-dependencies
+
+            - name: Run ESLint
+              run: npm run lint
+              working-directory: modules/01.Nodejs_Pipeline
+              continue-on-error: false
+              id: run-eslint
+
+            - name: Run Jest tests
+              run: npm test
+              working-directory: modules/01.Nodejs_Pipeline
+              continue-on-error: false
+              id: run-tests
+
+
+              # success/failure msg
+            - name: Check Success/Failure Message
+              if: always()
+              run: |
+            
+                if [ ${{ steps.install-dependencies.outcome}} =='success']; then
+                    echo "✅ Dependencies installed successfully!"
+                 else
+                    echo "❌ Failed to install dependencies!"
+                    exit 1
+                fi
+
+                
+                if [ ${{ steps.run-eslint.outcome}} =='success']; then
+                    echo "✅ Dependencies installed successfully!"
+                 else
+                    echo "❌ Failed to install dependencies!"
+                    exit 1
+                fi
+
+                
+                if [ ${{ steps.run-tests.outcome}} =='success']; then
+                    echo "✅ Dependencies installed successfully!"
+                 else
+                    echo "❌ Failed to install dependencies!"
+                    exit 1
+                fi
+                
+
+         
+                
+
+            
 
 
 
