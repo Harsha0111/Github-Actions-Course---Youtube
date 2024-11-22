@@ -12,10 +12,10 @@ jobs:
 
         steps:
             - name: Print Hello world
-              run: echo"Hello, World"
+              run: echo "Hello, World"
 
             - name: Run a custom script
               run: |
-                echo"This is custom script"
+                echo "This is custom script"
                 mkdir -p ny_directory
-                echo"Script executrd successfully"
+                echo "Script executrd successfully"
