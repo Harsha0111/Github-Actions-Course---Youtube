@@ -43,8 +43,7 @@ jobs:
             - name: Check Success/Failure Message
               if: always()
               run: |
-            
-                if [ ${{ steps.install-dependencies.outcome}} =='success']; then
+                if [ ${{ steps.install-dependencies.outcome}} == 'success' ]; then
                     echo "✅ Dependencies installed successfully!"
                  else
                     echo "❌ Failed to install dependencies!"
@@ -52,7 +51,7 @@ jobs:
                 fi
 
                 
-                if [ ${{ steps.run-eslint.outcome}} =='success']; then
+                if [ ${{ steps.run-eslint.outcome}} == 'success' ]; then
                     echo "✅ Dependencies installed successfully!"
                  else
                     echo "❌ Failed to install dependencies!"
@@ -60,7 +59,7 @@ jobs:
                 fi
 
                 
-                if [ ${{ steps.run-tests.outcome}} =='success']; then
+                if [ ${{ steps.run-tests.outcome}} == 'success' ]; then
                     echo "✅ Dependencies installed successfully!"
                  else
                     echo "❌ Failed to install dependencies!"
