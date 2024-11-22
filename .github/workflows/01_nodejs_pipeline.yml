@@ -3,7 +3,7 @@ name: 01.nodejs pipeline
 on:
     push:
         branches:
-            - dev
+            - main
 
 
 jobs:
