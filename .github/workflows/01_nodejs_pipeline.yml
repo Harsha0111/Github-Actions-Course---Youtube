@@ -38,6 +38,19 @@ jobs:
               continue-on-error: false
               id: run-tests
 
+            - name: Install Railway CLI
+              run: npm i -g @railway/cli
+              working-directory: modules/01.Nodejs_Pipeline
+              continue-on-error: false
+              id: install-railway-cli
+
+            - name: Deploy to Railway
+              run: railway up --service GHA-Node
+              env:
+                RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+              working-directory: modules/01.Nodejs_Pipeline
+              continue-on-error: false
+              id: deploy-to-railway
 
               # success/failure msg
             - name: Check Success/Failure Message
@@ -60,6 +73,20 @@ jobs:
 
                 
                 if [ ${{ steps.run-tests.outcome}} == 'success' ]; then
+                    echo "✅ Dependencies installed successfully!"
+                 else
+                    echo "❌ Failed to install dependencies!"
+                    exit 1
+                fi
+
+                if [ ${{ steps.install-railway-cli.outcome}} == 'success' ]; then
+                    echo "✅ Dependencies installed successfully!"
+                 else
+                    echo "❌ Failed to install dependencies!"
+                    exit 1
+                fi
+
+                if [ ${{ steps.deploy-to-railway.outcome}} == 'success' ]; then
                     echo "✅ Dependencies installed successfully!"
                  else
                     echo "❌ Failed to install dependencies!"
